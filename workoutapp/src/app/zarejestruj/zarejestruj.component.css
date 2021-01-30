@@ -1,0 +1,53 @@
+body{
+    background-size: cover;
+    background: url("src/assets/logintlo.jpg") center center no-repeat;
+    height: 100vh;
+    width: 100%;
+    background-attachment: fixed;
+    overflow: auto;
+}
+label {
+  display: block;
+  margin-top: 10px;
+}
+.card-container.card {
+  max-width: 400px !important;
+  padding: 40px 40px;
+margin-top: 6%;
+}
+
+.card {
+  background-color: #ffffff;
+  padding: 20px 25px 30px;
+  margin: 0 auto 25px;
+  margin-top: 50px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  border:5;
+  border-radius: 1rem;
+}
+ 
+.profile-img-card {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 10px;
+  display: block;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+#link{
+  color:blue;
+}
+#link:hover{
+  color:blue;
+  text-decoration:underline;
+}
+@keyframes example {
+  from {margin-top: 0;}
+  to {margin-top: 150px;}
+}

@@ -1,0 +1,61 @@
+
+<body>
+  <div class="col-md-12">
+    <div class="card card-container" data-aos="flip-right"
+    data-aos-offset="200"
+    data-aos-delay="80"
+    data-aos-duration="800"
+    data-aos-easing="ease-in-out"
+    data-aos-mirror="true"
+    data-aos-once="true">
+      <img
+        id="profile-img"
+        src="https://cdn2.iconfinder.com/data/icons/real-flat-security/512/keys-512.png"
+        class="profile-img-card"
+      />
+      <form
+        *ngIf="!isSuccessful"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+      
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            [(ngModel)]="form.email"
+            required
+            email
+            #email="ngModel"
+          />
+          <div class="alert-danger" *ngIf="f.submitted && email.invalid">
+            <div *ngIf="email.errors.required">Adres email jest wymagany</div>
+            <div *ngIf="email.errors.email">
+             Email musi być prawidłowy
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary btn-block">Zresetuj hasło</button>
+        </div>
+  
+        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        {{ errorMessage }}
+        </div>
+      </form>
+  
+      <div class="alert alert-success" *ngIf="isSuccessful">
+      <a> {{success}}</a> 
+      </div>
+      <a role="button" class="btn" id="link" (click)="loginPage()" >
+        Przejdź do strony logowania
+       </a>
+    </div>
+   
+  </div>
+  
+</body>

@@ -1,0 +1,43 @@
+.card-header{
+    background-color: white;;
+    color:black;
+    font-size:18px;
+    font-weight: 700;
+}
+h3{
+    font-size: 40;
+    font-weight: 700;
+
+}
+ p{
+font-size: 20px;
+font-weight: 900;
+}
+.account-settings .user-profile {
+    margin: 0 0 1rem 0;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+.account-settings .user-profile .user-avatar img {
+    width: 150x;
+    height: 150px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+}
+h6{
+    font-size: 30px;
+}
+.account-settings .about {
+    margin-top: 80px;
+    font-size: 0.8rem;
+    text-align: center;
+}
+.card {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+    margin-bottom: 1rem;
+}

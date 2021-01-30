@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+ 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <div class="dashboard-main-wrapper">
+   
+
+        <div class="dashboard-header">
+            <nav class="navbar navbar-expand-lg bg-white fixed-top">
+                <a class="navbar-brand">GymNotation</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto navbar-right-top">              
+                        <li class="nav-item dropdown nav-user">
+                            <a class="nav-link nav-user"  type="button" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Konto <i class="fas fa-user"></i> </a>
+                            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                                <div class="nav-user-info">
+                                    <h5 class="mb-0 text-white nav-user-name">Witaj, {{username}} </h5>    
+                                </div>
+                                <a class="dropdown-item "  routerLink="/dashboard/informacje"><i class="fas fa-user mr-2"></i>Konto</a>  
+                                <a class="dropdown-item"  type="button" (click)="wyloguj()"><i class="fas fa-power-off mr-2"></i>Wyloguj</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="nav-left-sidebar sidebar-dark">
+            <div class="menu-list">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav flex-column">
+                            <li class="nav-divider">
+                                Menu
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link active"  type="button"data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1"><i class="fas fa-dumbbell"></i>Trening</a>
+                                <div id="submenu-1" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link " routerLink="/dashboard/dodaj-trening" type="button">Dodaj Trening</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link"  routerLink="/dashboard/historia-treningu" type="button" >Historia Treningów</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" type="button" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fas fa-weight"></i>Pomiary</a>
+                                <div id="submenu-2" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link " routerLink="/dashboard/dodaj-pomiar" type="button">Dodaj Pomiar</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" routerLink="/dashboard/historia-pomiarow" type="button" >Historia Pomiarów</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" type="button" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-fw fa-chart-pie"></i>Statystyki</a>
+                                <div id="submenu-3" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" routerLink="/dashboard/rekordy" type="button" >Rekordy</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" routerLink="/dashboard/statystyki-pomiarow" type="button" >Statystyki Pomiarów</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" routerLink="/dashboard/statystyki-treningow" type="button">Statystyki Trenigów</a>
+                                        </li>
+                                      
+                                       
+                                        
+                                    </ul>
+                                </div>
+                            </li>             
+                            <li class="nav-item">
+                                <a class="nav-link" type="button" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5"><i class="fas fa-fw fa-table"></i>Rutyny i Ćwiczenia</a>
+                                <div id="submenu-5" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">               
+                                        <li class="nav-item">
+                                            <a class="nav-link" routerLink="/dashboard/lista-cwiczen" type="button">Lista Ćwiczeń</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" routerLink="/dashboard/lista-rutyn" type="button">Lista Rutyn </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link"  routerLink="/dashboard/stworz-rutyne"type="button">Stwórz przykładowy trening</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-divider">
+                               Twoje Konto
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" type="button" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6"><i class="fas fa-user"></i> Konto</a>
+                                <div id="submenu-6" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link"  routerLink="/dashboard"type="button">Informacje</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link"  routerLink="/dashboard/zmien-informacje"type="button">Zmień informacje</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link"  routerLink="/dashboard/zmien-login"type="button">Zmień nazwe użytkownika</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link"  routerLink="/dashboard/zmien-email"type="button">Zmień email</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link"  routerLink="/dashboard/zmien-haslo"type="button">Zmień hasło</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" routerLink="/dashboard/usun-konto"type="button">Usuń konto</a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link"  type="button" (click)="wyloguj()" data-toggle="collapse" aria-expanded="false" data-target="#submenu-7" aria-controls="submenu-7"><i class="fas fa-sign-out-alt"></i>Wyloguj</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" type="button" data-toggle="collapse" aria-expanded="false" data-target="#submenu-8" aria-controls="submenu-8"><i class="fas fa-copyright"></i>Autor</a>
+                                <div id="submenu-8" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://www.facebook.com/krystian.siedlarski">Facebook</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://www.instagram.com/ksiedlarski/?hl=pl">Instagram</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="https://www.linkedin.com/in/krystian-siedlarski-62b3b9178">Linkedin</a>
+                                        </li>
+                                       
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="dashboard-wrapper">
+            <div class="dashboard-ecommerce">
+                <div class="container-fluid dashboard-content "> 
+<router-outlet></router-outlet>
+</div>
+</div>
+</div>

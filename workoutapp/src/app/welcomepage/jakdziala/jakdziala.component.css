@@ -1,0 +1,92 @@
+
+.section-heading h2 {
+    padding-top: 50px;
+    font-size: 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-bottom: 50px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+
+  .section-title p {
+    margin-bottom: 0;
+  }
+  .about {
+    background: url("src/assets/about.jpg") center center no-repeat;
+    position: relative;
+    overflow: auto;
+    height: 100vh;
+  }
+  .about .container {
+    position: relative;
+    z-index: 10;
+  }
+  
+  .about .content {
+    padding: 30px 30px 30px 0;
+  }
+
+  
+  .about .content h3 {
+    font-weight: 700;
+    font-size: 34px;
+    color: #2f4d5a;
+    margin-bottom: 30px;
+    border-bottom-width: 1px;
+    border-bottom-color: black;
+    border-bottom-style: solid;
+  }
+  
+  .about .content p {
+    margin-bottom: 30px;
+    font-size: 25px;
+  }
+  
+
+  
+  .about .content .about-btn i {
+    font-size: 18px;
+    position: absolute;
+    right: 18px;
+    top: 9px;
+  }
+  
+  .about .icon-boxes .icon-box {
+    margin-top: 30px;
+  }
+
+  .about .icon-boxes .icon-box i {
+    font-size: 30px;
+    color: #2f4d5a;
+    margin-bottom: 10px;
+   
+  }
+  
+  .about .icon-boxes .icon-box h4 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    color: #2f4d5a;
+    border-bottom-width: 1px;
+    border-bottom-color: black;
+    border-bottom-style: solid;
+  }
+  
+  .about .icon-boxes .icon-box p {
+    font-size: 20px;
+    color: black;
+  }
+  
+  @media (max-width: 1200px) {
+    .about .content {
+      padding-right: 0;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .about {
+      text-align: center;
+    }
+  }

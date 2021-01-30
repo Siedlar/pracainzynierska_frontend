@@ -1,0 +1,36 @@
+<nav class="navbar navbar-light navbar-expand-lg bg-white fixed-top">
+
+    <a class="navbar-brand" >
+      <i class="fas fa-dumbbell"></i>  GymNotation
+        </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon" ></span>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav  mx-auto">
+        <li class="nav-item ">
+          <a class="nav-link text-dark" id="essa" (click)="scrollToTop()" type="button"><i class="fa fa-home"></i> O nas
+                <span class="sr-only"></span>
+              </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark"  id="essa" type="button" (click)="scrollToJakDziala()"  > <i class="fas fa-running"></i> Działanie</a>
+        </li>
+        <li class="nav-item " >
+          <a  class="nav-link text-dark" id="essa" type="button" (click)="scrollToGaleria()" >  <i class="fa fa-camera-retro"></i> Galeria</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark "  id="essa" type="button" (click)="scrollToOpinie()"><i class="far fa-sticky-note"></i> Opinie</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav navbar-right-top">
+        <li class="nav-item">
+          <a class="nav-link font-size1 text-dark" routerLink="/login"><i class="fa fa-user"></i> Zaloguj się</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link font-size1 text-dark" routerLink="/zarejestruj"><i class="fas fa-sign-in-alt"></i> Zarejestruj się</a>
+        </li>
+      </ul>
+   
+  </div>
+</nav>

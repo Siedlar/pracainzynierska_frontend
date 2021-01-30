@@ -1,0 +1,31 @@
+.navbar {
+    padding: 0px;
+    border-bottom: 1px solid #e6e6f2;
+    -webkit-box-shadow: 0px 0px 28px 0px rgba(82, 63, 105, 0.13);
+    box-shadow: 0px 0px 28px 0px rgba(82, 63, 105, 0.13);
+    min-height: 60px;
+
+}
+.navbar-brand {
+    display: inline-block;
+    margin-right: 1rem;
+    line-height: inherit;
+    white-space: nowrap;
+    padding: 11px 20px;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: black;
+}
+#essa{
+    
+    margin-right:20px ;
+    font-size: 20px;
+}
+.font-size1{
+    font-size: 20px;
+}
+.nav-item .nav-link:hover{
+    text-decoration: underline;
+    
+}
