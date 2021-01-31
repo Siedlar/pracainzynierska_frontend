@@ -6,3 +6,42 @@
         </div>
     </div>
 </div>
+
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ml-1" *ngIf="loading">
+       
+            <div class="loader"> </div>  
+    </div>
+
+<div class= "row" *ngIf="!fail">
+    <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12  mt-3" *ngFor="let pomiar of activePageDataChunk;" [ngClass]="{'fullscreen': isCardExpanded}"> 
+      <div class="card" (click)="expand()">
+          <div class="card-header"><h5>Data pomiaru:  {{pomiar.data}}</h5></div>
+          <div class="card-body">
+      <h5 *ngIf="pomiar.waga !== 0"> Waga: {{pomiar.waga}}   </h5>  
+      <h5 *ngIf="pomiar.biceps !==0">   Biceps:{{pomiar.biceps}} </h5>  
+      <h5 *ngIf="pomiar.udo !== 0">  {{pomiar.udo}}  </h5>  
+      <h5 *ngIf="pomiar.talia !== 0">   {{pomiar.talia}}</h5>  
+      <h5 *ngIf="pomiar.brzuch !== 0">  {{pomiar.brzuch}}   </h5>  
+      <h5 *ngIf="pomiar.przedramie !== 0">  {{pomiar.przedramie}} </h5>  
+      <h5 *ngIf="pomiar.lydka !== 0">     {{pomiar.lydka}} </h5>  
+      <h5 *ngIf="pomiar.szyja !== 0">     {{pomiar.szyja}} </h5>  
+      <h5 *ngIf="pomiar.klatka !== 0">    {{pomiar.klatka}} </h5>  
+          </div>
+      </div>
+    </div>
+</div>
+<div class= "row">
+   
+        <mat-paginator *ngIf="!fail" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3 float-right" [length]="pomiary.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChanged($event)"></mat-paginator>
+    
+</div>
+<div class= "row" *ngIf="fail && !loading">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3" >
+     
+          
+  
+<p >{{failMessage}}</p>
+    <p>Wpisz swój pierwszy pomiar  <span class="text-primary"  routerLink="/dashboard/dodaj-pomiar" type="button">tutaj</span></p>
+   
+    </div>
+</div>

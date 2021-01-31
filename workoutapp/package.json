@@ -5,6 +5,14 @@
   "main": "karma.conf.js",
   "private": true,
   "author": "Krystian Siedlarski",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint --force",
+    "e2e": "ng e2e"
+  },
   "license": "ISC",
   "dependencies": {
     "@angular/animations": "~9.0.3",

@@ -30,7 +30,7 @@ import { AuthGuardService } from './service/auth-guard.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TeximateModule } from 'ngx-teximate';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import {MatPaginatorModule} from '@angular/material/paginator';
 import { authInterceptorProviders } from './auth.interceptor';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ValidateEqualModule } from 'ng-validate-equal';
@@ -132,8 +132,8 @@ children:[
     ReactiveFormsModule,
     BrowserAnimationsModule,
     NgbModule,
-    ValidateEqualModule
-
+    ValidateEqualModule,
+    MatPaginatorModule
   ],
  
   providers: [UserServiceService,AuthGuardService,authInterceptorProviders],
