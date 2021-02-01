@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 import { error } from 'protractor';
 import { PomiarService } from 'src/app/service/pomiar.service';
 import { Pomiar } from 'src/app/types/pomiar';
@@ -18,15 +19,12 @@ export class HisotriapomiarowComponent implements OnInit, AfterViewInit{
  fail=true;
  loading = true;
  failMessage="Uzytkownik nie posiada jeszcze żadnej historii pomiarów."
-  constructor(private pomiar:PomiarService) { }
+  constructor(private pomiar:PomiarService,private router:Router) { }
   ngAfterViewInit(): void {
 
     
   }
-  isCardExpanded = false;
-  expand() {
-    this.isCardExpanded = !this.isCardExpanded;
-  }
+
 
   ngOnInit(): void {
     this.pomiar.getPomiary().subscribe(
@@ -52,5 +50,17 @@ export class HisotriapomiarowComponent implements OnInit, AfterViewInit{
     let firstCut = e.pageIndex * e.pageSize;
     let secondCut = firstCut + e.pageSize;
     this.activePageDataChunk = this.pomiary.slice(firstCut, secondCut);
+  }
+  deletePomiar(pomiary){
+    if(confirm("Czy jesteś pewien że chcesz usunąć ten pomiar?")){
+    this.pomiar.deletePomiar(pomiary).subscribe(
+      data=>{
+        window.location.reload();
+      }
+    )
+  }}
+  editPomiar(pomiar){
+    if(confirm("Czy chcesz edytować ten pomiar?")){
+    this.router.navigate(['/dashboard/dodaj-pomiar'],{state:{pomiar}})}
   }
 }

@@ -6,3 +6,184 @@
         </div>
     </div>
 </div>
+<div class ="row " *ngIf="!successful">
+    <h5>Dostępne wymiary: </h5>
+    <button class="btn btn-rounded btn-primary ml-2" name="klatka" (click)="add('klatka')" [disabled]="dynamicForm.get('klatka')">Klatka</button><button class="btn btn-rounded btn-primary ml-2" name="waga" (click)="add('waga')" [disabled]="dynamicForm.get('waga')">Waga</button>
+    <button class="btn btn-rounded btn-primary ml-2" name="biceps" (click)="add('biceps')" [disabled]="dynamicForm.get('biceps')">Biceps</button><button class="btn btn-rounded btn-primary ml-2" name="udo" (click)="add('udo')" [disabled]="dynamicForm.get('udo')">Udo</button>
+    <button class="btn btn-rounded btn-primary ml-2" name="talia" (click)="add('talia')" [disabled]="dynamicForm.get('talia')">Talia</button><button class="btn btn-rounded btn-primary ml-2" name="brzuch" (click)="add('brzuch')" [disabled]="dynamicForm.get('brzuch')">Brzuch</button>
+    <button class="btn btn-rounded btn-primary ml-2" name="przedramie" (click)="add('przedramie')" [disabled]="dynamicForm.get('przedramie')">Przedramie</button><button class="btn btn-rounded btn-primary ml-2" name="lydka" (click)="add('lydka')" [disabled]="dynamicForm.get('lydka')">Łydka</button>
+    <button class="btn btn-rounded btn-primary ml-2" name="szyja" (click)="add('szyja')" [disabled]="dynamicForm.get('szyja')">Szyja</button>
+</div>
+<div class="row">
+    
+    <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()" *ngIf="!successful">
+       
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3"   data-aos="fade-left"
+        data-aos-offset="100"
+        data-aos-delay="50"
+        data-aos-duration="700"
+        data-aos-easing="ease-in-out"
+        data-aos-mirror="true"
+        data-aos-once="true">
+            <Label>DATA</Label>
+            
+        <input type="date" formControlName="data" class="form-control" > 
+        <div class="alert-danger mt-1"  *ngIf="submitted && f.data.errors" >
+       Data jest wymagana!
+        </div> 
+    </div>
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3" *ngIf="dynamicForm.get('klatka')"  data-aos="fade-left"
+    data-aos-offset="100"
+    data-aos-delay="50"
+    data-aos-duration="700"
+    data-aos-easing="ease-in-out"
+    data-aos-mirror="true"
+    data-aos-once="true">
+        <Label>
+         Klatka</Label>
+         <div class="d-flex">
+            <input type="number" *ngIf="dynamicForm.get('klatka')"class="form-control" formControlName="klatka"> <button class="btn-danger ml-2"(click)="remove('klatka')"><i class="fas fa-minus"></i></button>  </div>
+            <div class="alert-danger mt-1"  *ngIf="submitted && f.klatka.errors" >
+                Dodane pole nie może być puste!
+                 </div> 
+        </div>
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3"  *ngIf="dynamicForm.get('waga')"  data-aos="fade-left"
+        data-aos-offset="100"
+        data-aos-delay="50"
+        data-aos-duration="700"
+        data-aos-easing="ease-in-out"
+        data-aos-mirror="true"
+        data-aos-once="true">
+         
+           
+            <Label>
+        Waga</Label>
+        <div class="d-flex">
+        <input type="number" *ngIf="dynamicForm.get('waga')" class="form-control"formControlName="waga"> <button class="btn-danger  ml-2" (click)="remove('waga')"><i class="fas fa-minus"></i></button></div>
+        <div class="alert-danger mt-1"  *ngIf="submitted && f.waga.errors" >
+            Dodane pole nie może być puste!
+             </div> 
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3" *ngIf="dynamicForm.get('biceps')"  data-aos="fade-left"
+            data-aos-offset="100"
+            data-aos-delay="50"
+            data-aos-duration="700"
+            data-aos-easing="ease-in-out"
+            data-aos-mirror="true"
+            data-aos-once="true">
+                <Label> Biceps</Label> 
+                <div class="d-flex">
+          
+                   <input type="number" *ngIf="dynamicForm.get('biceps')"class="form-control" formControlName="biceps"> <button class="btn-danger  ml-2" (click)="remove('biceps')"><i class="fas fa-minus"></i></button></div>
+                   <div class="alert-danger mt-1"  *ngIf="submitted && f.biceps.errors" >
+                    Dodane pole nie może być puste!
+                     </div> 
+
+</div>
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3"  *ngIf="dynamicForm.get('udo')"  data-aos="fade-left"
+data-aos-offset="100"
+data-aos-delay="50"
+data-aos-duration="700"
+data-aos-easing="ease-in-out"
+data-aos-mirror="true"
+data-aos-once="true">
+                
+               
+    <Label> Udo</Label>   
+                    <div class="d-flex">
+                    <input type="number" *ngIf="dynamicForm.get('udo')" class="form-control"formControlName="udo"> <button class="btn-danger  ml-2" (click)="remove('udo')"><i class="fas fa-minus"></i></button>     </div>
+                    <div class="alert-danger mt-1"  *ngIf="submitted && f.udo.errors" >
+                        Dodane pole nie może być puste!
+                         </div> 
+                     </div>
+                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3" *ngIf="dynamicForm.get('talia')" data-aos="fade-left"
+                     data-aos-offset="100"
+                     data-aos-delay="50"
+                     data-aos-duration="700"
+                     data-aos-easing="ease-in-out"
+                     data-aos-mirror="true"
+                     data-aos-once="true"> 
+                    
+                        <Label> Talia</Label> 
+                        <div class="d-flex">
+                    <input type="number" *ngIf="dynamicForm.get('talia')"class="form-control" formControlName="talia"> <button class="btn-danger  ml-2" (click)="remove('talia')"><i class="fas fa-minus"></i></button>
+      
+                </div>
+                <div class="alert-danger mt-1"  *ngIf="submitted && f.talia.errors" >
+                    Dodane pole nie może być puste!
+                     </div> 
+                        </div>
+                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3" *ngIf="dynamicForm.get('brzuch')" data-aos="fade-left"
+                         data-aos-offset="100"
+                         data-aos-delay="50"
+                         data-aos-duration="700"
+                         data-aos-easing="ease-in-out"
+                         data-aos-mirror="true"
+                         data-aos-once="true">
+                         <label >
+                            Brzuch
+                            </label>
+                            <div class="d-flex">
+                               <input type="number" *ngIf="dynamicForm.get('brzuch')" class="form-control"formControlName="brzuch"> <button class="btn-danger  ml-2" (click)="remove('brzuch')"><i class="fas fa-minus"></i></button></div>
+                               <div class="alert-danger mt-1"  *ngIf="submitted && f.brzuch.errors" >
+                                Dodane pole nie może być puste!
+                                 </div> 
+                        
+                            </div>
+                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3"  *ngIf="dynamicForm.get('przedramie')"  data-aos="fade-left"
+                             data-aos-offset="100"
+                             data-aos-delay="50"
+                             data-aos-duration="700"
+                             data-aos-easing="ease-in-out"
+                             data-aos-mirror="true"
+                             data-aos-once="true">
+                             <label>
+                                Przedramie
+                            </label>
+                                <div class="d-flex">
+                                   <input type="number" *ngIf="dynamicForm.get('przedramie')"class="form-control" formControlName="przedramie"> <button class="btn-danger  ml-2"(click)="remove('przedramie')"><i class="fas fa-minus"></i></button> </div>
+                                   <div class="alert-danger mt-1"  *ngIf="submitted && f.przedramie.errors" >
+                                    Dodane pole nie może być puste!
+                                     </div> 
+                                </div>
+                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3" *ngIf="dynamicForm.get('lydka')"  data-aos="fade-left"
+                                 data-aos-offset="100"
+                                 data-aos-delay="50"
+                                 data-aos-duration="700"
+                                 data-aos-easing="ease-in-out"
+                                 data-aos-mirror="true"
+                                 data-aos-once="true">
+                                 <label >
+                                   Łydka
+                                </label>
+                                <div class="d-flex">
+                                       <input type="number" *ngIf="dynamicForm.get('lydka')"class="form-control" formControlName="lydka"> <button class="btn-danger  ml-2" (click)="remove('lydka')"><i class="fas fa-minus"></i></button>          </div>
+                                       <div class="alert-danger mt-1"  *ngIf="submitted && f.lydka.errors" >
+                                        Dodane pole nie może być puste!
+                                         </div> 
+                                    </div>
+                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3 " *ngIf="dynamicForm.get('szyja')"  data-aos="fade-left"
+                                     data-aos-offset="100"
+                                     data-aos-delay="50"
+                                     data-aos-duration="700"
+                                     data-aos-easing="ease-in-out"
+                                     data-aos-mirror="true"
+                                     data-aos-once="true">
+                                     <label >
+                                        Szyja
+                                    </label>
+                                    <div class="d-flex">
+                                           <input type="number" *ngIf="dynamicForm.get('szyja')" class="form-control"formControlName="szyja"> <button class="btn-danger  ml-2" (click)="remove('szyja')"><i class="fas fa-minus"></i></button>          </div>
+                                           <div class="alert-danger mt-1"  *ngIf="submitted && f.szyja.errors" >
+                                        Dodane pole nie może być puste!
+                                             </div> 
+                                        </div>
+          <button type="submit" class= "btn btn-primary mt-3 float-right">Submit</button>
+      </form>
+    
+    </div>
+    <div class="row-gutter" *ngIf="successful">
+        <div class="alert alert-success" >
+            <a> Udało się dodać pomiar</a> 
+            </div>
+    </div>

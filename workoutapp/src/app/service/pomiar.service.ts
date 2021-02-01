@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, SimpleChange } from '@angular/core';
 import { Observable } from 'rxjs';
 const API_URL = 'http://localhost:8080/api/pomiar/';
 const httpOptions = {
@@ -18,15 +18,21 @@ export class PomiarService {
 
   savePomiar(form):Observable<any>{
     return this.http.post(API_URL + 'savePomiar', {
-      name:form.name,
-      surname:form.surname,
-      dateOfBirth:form.dateOfBirth,
-      wzrost: form.wzrost,
-      kraj: form.kraj,
-      city: form.miasto,
-      ulica: form.ulica,
-      phoneNumber:  form.phoneNumber,
-      notatka:form.notatka
+      id:form.id,
+     waga:form.waga,
+     data:form.data,
+     biceps:form.biceps,
+     udo:form.udo,
+     talia:form.talia,
+     brzuch:form.brzuch,
+     przedramie:form.przedramie,
+     lydka:form.lydka,
+     szyja:form.szyja,
+     klatka:form.klatka
     }, httpOptions);
+}
+deletePomiar(pomiar):Observable<any>{
+  return this.http.post(API_URL + 'deletePomiar', pomiar
+   );
 }
 }

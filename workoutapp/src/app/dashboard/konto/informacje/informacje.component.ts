@@ -26,10 +26,13 @@ retrievedImage: any;
     this.userService.getUserInfo().subscribe(
       data=>{
         this.user=new User(data.name,data.surname,data.dateOfBirth,data.wzrost,data.kraj,data.city,data.ulica,data.phoneNumber,data.notatka)
+        console.log(data)
       },error=>{
        
       }
     )
+   
+
     this.getImage();
    
     }

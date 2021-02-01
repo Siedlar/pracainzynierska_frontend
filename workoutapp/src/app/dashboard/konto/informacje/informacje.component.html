@@ -136,7 +136,7 @@ data-aos-once="true">
 					<div class="about">		
                         <h3 class="text-primary">Cytat</h3>
                         <blockquote class="blockquote mb-0">
-                            <p>{{user?.notatka}}</p> 
+                            <p>{{user?.notatka}}</p>  <p *ngIf="user.notatka== null">Dane do uzupełnienia</p>
                         </blockquote>
 					</div>
 				</div>
@@ -152,46 +152,46 @@ data-aos-once="true">
 					</div>
 					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 						<div >
-                            <p><span>Imie</span>:{{user?.name}}</p> 
+                            <p *ngIf="user.name != null"><span>Imie</span>:{{user?.name}}</p>  <p *ngIf="user.name== null"><span>Imie:</span>Dane do uzupełnienia</p> 
 						</div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 						<div >
-                            <p><span>Nazwisko </span>:{{user?.surname}}</p>
+                            <p *ngIf="user.surname!= null"> <span>Nazwisko </span>:{{user?.surname}}</p> <p *ngIf="user.surname== null"><span>Nazwisko:</span>Dane do uzupełnienia</p>
 					</div>
 				</div> <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                     <div >
-                        <p><span>Login </span>: {{login}}</p>
-                    </div>
+                        <p><span>Login </span>: {{login}}</p> 
+                    </div> 
                 </div>
 					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 						<div class>
-                            <p><span>Data Urodzenia</span>:{{user?.dateOfBirth}}</p>
+                            <p *ngIf="user.dateOfBirth != null"><span>Data Urodzenia</span>:{{user?.dateOfBirth}}</p> <p *ngIf="user.dateOfBirth== null"><span>Data Urodzenia:</span>Dane do uzupełnienia</p>
 						</div>
 					</div>
 					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 						<div >
-					        <p><span>Wzrost </span>: {{user?.wzrost}}</p>
+					        <p *ngIf="user.wzrost != 0"><span>Wzrost </span>: {{user?.wzrost}}</p> <p *ngIf="user.wzrost== 0"><span>Wzrost:</span>Dane do uzupełnienia</p>
 						</div>
 					</div>
                 </div>
 				<div class="row gutters">
 					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-						<h6 class="mb-3 text-primary">Adres</h6>
+						<h6 class="mb-3 text-primary">Adres</h6> 
 					</div>
 					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 						<div >
-                            <p><span>Kraj </span>: {{user?.kraj}}</p>
+                            <p *ngIf="user.kraj!= null"><span>Kraj </span>: {{user?.kraj}}</p> <p *ngIf="user.kraj== null"><span>Kraj:</span>Dane do uzupełnienia</p>
 						</div>
 					</div>
 					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 						<div >
-                            <p><span>Miasto </span>: {{user?.miasto}}</p>
+                            <p *ngIf="user.miasto != null"><span>Miasto </span>: {{user?.miasto}}</p> <p *ngIf="user.miasto== null"><span>Miasto:</span>Dane do uzupełnienia</p>
 						</div>
 					</div>
 					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 						<div>
-                            <p><span>Ulica </span>: {{user?.ulica}}</p>
+                            <p *ngIf="user.ulica != null"><span>Ulica </span>: {{user?.ulica}}</p> <p *ngIf="user.ulica== null"><span>Ulica:</span>Dane do uzupełnienia</p>
 						</div>
 					</div>	
 				</div>
@@ -201,12 +201,12 @@ data-aos-once="true">
 					</div>
 					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 						<div >
-                            <p><span>Telefon </span>: {{user?.phoneNumber}}</p>
+                            <p *ngIf="!user.phoneNumber== null"><span>Telefon </span>: {{user?.phoneNumber}}</p> <p *ngIf="user.phoneNumber== null"><span>Telefon:</span>Dane do uzupełnienia</p>
 						</div>
 					</div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 						<div >
-                            <p><span>Adres Email </span>: {{email}}</p>
+                            <p><span>Adres Email </span>: {{email}}</p> 
 						</div>
 					</div>
 				</div>

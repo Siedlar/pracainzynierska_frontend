@@ -1323,7 +1323,8 @@ html body .display-7 {
 }
 
 .dashboard-content {
-    padding: 30px 0px 60px 60px
+    padding: 30px 30px 80px 30px;
+    min-height: 100vh;
 }
 .splash-container {
     width: 100%;
