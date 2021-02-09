@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" >
+        <div class="page-header">
+            <h2 class="pageheader-title">Ćwiczenie</h2>
+            <hr>
+        </div>
+    </div>
+</div>
+<div class="row" data-aos="fade-left"
+data-aos-offset="100"
+data-aos-delay="50"
+data-aos-duration="700"
+data-aos-easing="ease-in-out"
+data-aos-mirror="true"
+data-aos-once="true">
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" >
+    <div class="card ">
+        <div class="card-header"> {{ cwiczenie.nazwa_cwiczenia | titlecase }}</div>
+        <div class="card-body">
+            <h5 >Poziom zaawansowania: {{cwiczenie.trudnosc.trudnosc}}</h5>
+            <h5 class="pt-2">Partia mięśniowa: {{cwiczenie.partia.partia}}</h5>
+            <h5 class="pt-2">Potrzebny ekwipunek: <span *ngFor="let ekwipunek of cwiczenie.ekwipunek"> {{ekwipunek.ekwipunek}} </span></h5>
+            <h3 class="pt-5">Wskazówki</h3>
+            <h5 class="pt-3">{{cwiczenie.wskazowki}}</h5>
+        
+<iframe [src]='url' height="500px" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 pt-3" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+</div>
+</div>

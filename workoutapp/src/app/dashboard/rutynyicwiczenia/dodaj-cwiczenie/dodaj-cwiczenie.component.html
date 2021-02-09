@@ -1,0 +1,97 @@
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" >
+        <div class="page-header">
+            <h2 class="pageheader-title">Dodawanie ćwiczenia</h2>
+            <hr>
+        </div>
+    </div>
+</div>
+
+<div class="row" data-aos="fade-left" *ngIf="!successful"
+data-aos-offset="100"
+data-aos-delay="50"
+data-aos-duration="700"
+data-aos-easing="ease-in-out"
+data-aos-mirror="true"
+data-aos-once="true">
+
+    <form [formGroup]="cwiczenieForm" (ngSubmit)="onSubmit()"  >
+
+        <label > Nazwa ćwiczenia</label>
+        <input type="text" class="form-control"  formControlName="nazwa_cwiczenia"  > 
+        <div class="alert-danger mt-1"  *ngIf="submitted && f.nazwa_cwiczenia.errors" >
+            Dodane pole nie może być puste!
+             </div> 
+        <label > Link do filmu</label>
+        <input type="text"  class="form-control" formControlName="url_film"   > 
+        <div class="alert-danger mt-1"  *ngIf="submitted && f.url_film.errors" >
+            Dodane pole nie może być puste!
+             </div> 
+    
+
+        <label > Link do zdjęcia</label>
+        <input type="text"   class="form-control"  formControlName="url_zdjecia"  >
+        <div class="alert-danger mt-1"  *ngIf="submitted && f.url_zdjecia.errors" >
+            Dodane pole nie może być puste!
+             </div> 
+
+        <label > Trudność ćwiczenia</label>
+        <select class="form-control"  formControlName="trudnosc" >
+            <option >-- Wybierz trudność --</option>
+            <option *ngFor="let trudnosc of Trudnosc" >
+              {{ trudnosc.trudnosc }}
+            </option>
+          </select>
+          <div class="alert-danger mt-1"  *ngIf="submitted && f.trudnosc.errors" >
+            Dodane pole nie może być puste!
+             </div> 
+
+        <label > Partia</label>
+        <select class="form-control"  formControlName="partia"  >
+            <option >-- Wybierz partię --</option>
+          <option *ngFor="let partia of Partia" >
+            {{ partia.partia }}
+          </option>
+        </select>
+        <div class="alert-danger mt-1"  *ngIf="submitted && f.partia.errors" >
+            Dodane pole nie może być puste!
+             </div> 
+<div class= "row mt-3 ml-1 ">
+       <label>Ekwipunek</label>
+        <button  class="btn btn-primary ml-3" type="button" (click)="addEkwipunek()">Dodaj </button></div>
+        <div formArrayName="ekwipunek" *ngFor="let item of ekwipunek.controls; let i=index" class="d-flex mt-3" data-aos="fade-left"
+        data-aos-offset="100"
+        data-aos-delay="50"
+        data-aos-duration="700"
+        data-aos-easing="ease-in-out"
+        data-aos-mirror="true"
+        data-aos-once="true">
+        
+        <select class="form-control"   [formControlName]="i"  >
+    
+            <option  >-- Wybierz ekwipunek --</option>
+            <option *ngFor="let ekwipunek of Ekwipunek">
+              {{ ekwipunek.ekwipunek }}
+            </option>
+          </select>
+          <button class="btn-danger ml-2"(click)="deleteEkwipunek(i)"><i class="fas fa-minus"></i></button>
+          <!-- <div class="alert-danger ml-2"  *ngIf="submitted && f.ekwipunek.controls[i].errors" >
+            Dodane pole nie może być puste!
+             </div>  -->
+        </div>
+       
+
+          <label > Wskazówki</label>
+        <textarea type="textarea"    class="form-control" formControlName="wskazowki" > </textarea>
+        <div class="alert-danger mt-1"  *ngIf="submitted && f.wskazowki.errors" >
+            Dodane pole nie może być puste!
+             </div> 
+          <button type="submit" class= "btn btn-primary mt-3 float-right">Dodaj pomiar</button>
+      </form>
+    
+    </div>
+    <div class="row-gutter" *ngIf="successful">
+      <div class="alert alert-success" >
+          <a> Ćwiczenie zostało prawidłowo dodane do bazy!!!</a> 
+          </div>
+  </div>

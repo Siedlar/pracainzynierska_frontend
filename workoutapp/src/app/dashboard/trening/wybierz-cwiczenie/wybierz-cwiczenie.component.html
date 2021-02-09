@@ -1,0 +1,166 @@
+<div class ="container "  id="kontener">
+
+    
+    <mat-dialog-content>
+        <div class="row" *ngIf="loading && !next">
+  
+            <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12 col-12">
+                <div type="button" class="card mb-3 flex-row" id="card" *ngFor="let cwiczenie of activePageDataChunk;" (click)="zapisz(cwiczenie)" >
+                    <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 " id="siema"> 
+                        
+                        <h5 > <img src="{{cwiczenie.url_zdjecia}}"></h5>    
+                    </div>
+                       
+                    <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 text-lg-left "> 
+                        
+                        <h2 class="pl-md-3">Ćwiczenie: {{cwiczenie.nazwa_cwiczenia}}</h2>
+                        <h5 class="pl-md-3 fs ">Poziom zaawansowania: {{cwiczenie.trudnosc.trudnosc}}</h5>
+                        <h5 class="pl-md-3">Partia mięśniowa: {{cwiczenie.partia.partia}}</h5>
+                        <h5 class="pl-md-3">Potrzebny ekwipunek: <span *ngFor="let ekwipunek of cwiczenie.ekwipunek ;let lastItem = last;"> {{ekwipunek.ekwipunek}} <span *ngIf="!lastItem">,</span></span></h5>  
+                    </div>
+                        
+                     
+                    </div>
+           
+                </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12" *ngIf="loading">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="font-16">Filtrowanie</h3>
+                        </div>
+                        <form [formGroup]="cwiczenieForm" (ngSubmit)="onSubmit()"  >
+                        <div class="card-body border-top">
+                            <h3 class="font-16">Trudność </h3>
+                            <select class="form-control"  formControlName="trudnosc" >
+                                <option [ngValue]=""  value="">-- Wybierz trudność --</option>
+                                <option *ngFor="let trudnosc of Trudnosc" >
+                                  {{ trudnosc.trudnosc }}
+                                </option>
+                              </select>
+                      
+                        </div>
+                        <div class="card-body border-top">
+                            <h3 class="font-16">Ekwipunek </h3>
+                            <select class="form-control"   formControlName="ekwipunek"  >
+                                <option  [ngValue]="" value="">-- Wybierz ekwipunek --</option>
+                                <option *ngFor="let ekwipunek of Ekwipunek">
+                                  {{ ekwipunek.ekwipunek }}
+                                </option>
+                              </select>
+                          
+                        </div>
+                        <div class="card-body border-top">
+                            <h3 class="font-16">Partia </h3>       
+                              <select class="form-control"  formControlName="partia"  >
+                                <option [ngValue]="" value="" >-- Wybierz partię --</option>
+                              <option *ngFor="let partia of Partia" >
+                                {{ partia.partia }}
+                              </option>
+                            </select>
+                        </div>
+                        <div class="card-body border-top">
+                            <h3 class="font-16">Znajdź po nazwie ćwiczenia</h3>
+                            <input type="text" formControlName="nazwa_cwiczenia" class="form-control" > 
+                        </div>
+                        <div class="card-body border-top">
+                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid dashboard-content "> 
+                <mat-paginator *ngIf="loading && !next" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3 float-right" [length]="filterArray.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChanged($event)"></mat-paginator>
+            </div>
+           
+   <div class="row"  *ngIf="loading && next">
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 " id="siema"> 
+                        
+                        <h5 > <img src="{{historiaCwiczen.cwiczenie.url_zdjecia}}"></h5>    
+                    </div>
+                       
+                    <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 text-lg-left "> 
+                        
+                        <h2 class="pl-md-3">Ćwiczenie: {{historiaCwiczen.cwiczenie.nazwa_cwiczenia}}</h2>
+                        <h5 class="pl-md-3 fs ">Poziom zaawansowania: {{historiaCwiczen.cwiczenie.trudnosc.trudnosc}}</h5>
+                        <h5 class="pl-md-3">Partia mięśniowa: {{historiaCwiczen.cwiczenie.partia.partia}}</h5>
+                        <h5 class="pl-md-3">Potrzebny ekwipunek: <span *ngFor="let ekwipunek of historiaCwiczen.cwiczenie.ekwipunek ;let lastItem = last;"> {{ekwipunek.ekwipunek}} <span *ngIf="!lastItem">,</span></span></h5>  
+                    </div>
+                    <label class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-lg-left ">Zapis</label>   
+                    <h6 *ngIf="historiaCwiczen.czasTrwaniaCwiczenia != null" class="ml-3">Czas Trwania Treningu: {{historiaCwiczen.czasTrwaniaCwiczenia}}</h6>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-lg-left " *ngIf="serie.length == 0"> Dodaj pierwsze zapisy</div>
+                       <div *ngFor="let cwiczenie of serie;let lastItem = last;"  class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-lg-left mt-2">
+                     <div *ngIf="cwiczenie.ciezar != null">  Seria: {{cwiczenie.seria}}     Ilość powtórzeń: {{cwiczenie.powtorzenia}}  Ciężar:  {{cwiczenie.ciezar}} </div>  
+                     <div *ngIf="cwiczenie.czas != null">  Seria: {{cwiczenie.seria}}   Czas: {{cwiczenie.czas}}     Kilometry: {{cwiczenie.kilometry}}   </div>  
+
+                     <hr *ngIf="lastItem">
+                    </div> 
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 " *ngIf="historiaCwiczen.cwiczenie.partia.partia != 'Kardio'"> 
+                        <form [formGroup]="jednoCwiczenie"   >
+           
+                          
+                            <div class=" mt-3">
+                               <div  *ngIf="jednoCwiczenie.controls.czasTrwaniaCwiczenia" > Czas trwania cwiczenia   <input type="number" class="form-control" formControlName="czasTrwaniaCwiczenia"  > </div>
+                               <div class="alert-danger mt-1"  *ngIf="submitted2 && jednoCwiczenie.controls.czasTrwaniaCwiczenia.errors" >
+                                Pole nie może być puste
+                                     </div>
+                               Seria   <input type="number" class="form-control"  formControlName="seria"  > 
+                             <div class="alert-danger mt-1"  *ngIf="submitted2 && jednoCwiczenie.controls.seria.errors" >
+                              Pole nie może być puste
+                                   </div>
+                            Powtorzenia    <input type="number" class="form-control"  formControlName="powtorzenia"  > 
+                            <div class="alert-danger mt-1"  *ngIf="submitted2 && jednoCwiczenie.controls.powtorzenia.errors" >
+                                Pole nie może być puste
+                                   </div>
+                             Ciezar   <input type="number" class="form-control"  formControlName="ciezar"  > 
+                             <div class="alert-danger mt-1"  *ngIf="submitted2 && jednoCwiczenie.controls.ciezar.errors" >
+                                Pole nie może być puste
+                                   </div>
+
+                            </div>
+                           <div class="mt-3 "> Dodaj kolejna serie<button class="btn-danger  ml-2" (click)="dodajSerie()"><i class="fas fa-plus"></i></button></div> 
+                       
+                </form>
+                </div>
+
+
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 " *ngIf="historiaCwiczen.cwiczenie.partia.partia == 'Kardio'"> 
+                    <form [formGroup]="jednoCwiczenie2"   >
+       
+                      
+                        <div class=" mt-3">
+                           <div  *ngIf="jednoCwiczenie2.controls.czasTrwaniaCwiczenia" > Czas trwania cwiczenia   <input type="text" class="form-control" formControlName="czasTrwaniaCwiczenia"  > </div>
+                           <div class="alert-danger mt-1"  *ngIf="jednoCwiczenie2.controls.czasTrwaniaCwiczenia && submitted3  && jednoCwiczenie2.controls.czasTrwaniaCwiczenia.errors ">
+                            Pole nie może być puste
+                               </div>
+                               Seria:   <input type="number"  class="form-control"  formControlName="seria"  > 
+                               <div class="alert-danger mt-1"  *ngIf="submitted3 && jednoCwiczenie2.controls.seria.errors">
+                                  Pole nie może być puste
+                                     </div>
+                           Czas:   <input type="number" class="form-control"  formControlName="czas"  > 
+                         <div class="alert-danger mt-1"  *ngIf="submitted3 && jednoCwiczenie2.controls.czas.errors" >
+                            Pole nie może być puste
+                               </div>
+                        Odległość:    <input type="number" class="form-control"  formControlName="kilometry"  >  
+                        <div class="alert-danger mt-1"  *ngIf="submitted3 && jednoCwiczenie2.controls.kilometry.errors" >
+                            Pole nie może być puste
+                               </div>         
+                        </div>
+                       <div class="mt-3 "> Dodaj kolejna serie<button class="btn-danger  ml-2" (click)="dodajSerie2()"><i class="fas fa-plus"></i></button></div> 
+                   
+            </form>
+            </div>
+
+
+
+                    </div>
+
+   
+    </mat-dialog-content>
+    <mat-dialog-actions align="end" >
+      <button class="btn btn-dark mr-3"  mat-button (click)="onNoClick()" >Zakończ</button>
+      <button class="btn btn-dark" mat-button (click)="zakonczenie()" [mat-dialog-close]="historiaCwiczen" cdkFocusInitial>Dodaj</button>
+    </mat-dialog-actions>
+</div>

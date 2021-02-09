@@ -27,13 +27,15 @@ retrievedImage: any;
       data=>{
         this.user=new User(data.name,data.surname,data.dateOfBirth,data.wzrost,data.kraj,data.city,data.ulica,data.phoneNumber,data.notatka)
         console.log(data)
+        this.getImage();
       },error=>{
-       
+        this.user=new User(error.error.name,error.error.surname,error.error.dateOfBirth,error.error.wzrost,error.error.kraj,error.error.city,error.error.ulica,error.error.phoneNumber,error.error.notatka)
+        console.log(this.user)
       }
     )
    
 
-    this.getImage();
+ 
    
     }
     public onFileChanged(event) {

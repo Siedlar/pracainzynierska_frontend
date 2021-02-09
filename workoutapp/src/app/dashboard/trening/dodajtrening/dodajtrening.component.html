@@ -1,8 +1,64 @@
 <div class="row">
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" >
         <div class="page-header">
-            <h2 class="pageheader-title">Dodawanie treningu</h2>
+            <h2 class="pageheader-title">Dodawanie treningu w trakcie jego trwania</h2>
             <hr>
         </div>
     </div>
+</div>
+<div data-aos="fade-in"
+data-aos-offset="100"
+data-aos-delay="50"
+data-aos-duration="700"
+data-aos-easing="ease-in-out"
+data-aos-mirror="true"
+data-aos-once="true" *ngIf="!successful">
+<form [formGroup]="cwiczenieForm" (ngSubmit)="onSubmit()"  >
+    <label > Czas Trwania treningu: </label><input type="number" class="form-control"  formControlName="czasTrwania"  > 
+    <div class="alert-danger mt-1"  *ngIf="submitted && f.czasTrwania.errors" >
+        Pole nie może być puste!
+         </div> 
+
+<label > Data Treningu: </label><input type="date" class="form-control"   formControlName="dataTreningu" > 
+<div class="alert-danger mt-1"  *ngIf="submitted && f.dataTreningu.errors" >
+    Pole nie może być puste!
+     </div> 
+<label > Typ treningu</label>
+<select class="form-control"  formControlName="typTreningu" >
+    <option >-- Wybierz typ treningu --</option>
+    <option *ngFor="let trening of typyTreningu" >
+      {{ trening.typTreningu }}
+    </option>
+  </select>
+  <div class="alert-danger mt-1"  *ngIf="submitted && f.typTreningu.errors" >
+    Pole nie może być puste!
+     </div> 
+
+     <label > Notatka: </label><textarea  type="text" class="form-control"    formControlName="notatka"  > </textarea>
+
+
+<button type="submit" class= "btn btn-primary mt-3 float-right">Dodaj trening</button>
+</form>
+<h1 class="mt-3">LISTA CWICZEN</h1>
+<hr>
+<div *ngFor="let cwiczenia of historiaCwiczen;let i=index;" class="mt-3"  data-aos="fade-left"
+data-aos-offset="100"
+data-aos-delay="50"
+data-aos-duration="700"
+data-aos-easing="ease-in-out"
+data-aos-mirror="true"
+data-aos-once="true">
+  <div class="d-flex">
+<h3>Ćwiczenie nr {{i+1}}: {{cwiczenia.cwiczenie.nazwa_cwiczenia}}</h3><button class="btn-danger  ml-2" (click)="remove(cwiczenia)"><i class="fas fa-minus"></i></button>
+</div></div>
+<div class="alert-danger mt-1"  *ngIf="submitted && brakCwiczen" >
+  Nie dodałeś żadnego ćwiczenia
+     </div>
+
+<button class="btn btn-primary mt-3" mat-button (click)="openDialog()">Dodaj Ćwiczenie</button>
+</div>
+<div class="row-gutter" *ngIf="successful">
+  <div class="alert alert-success" >
+      <a> Trening został prawidłowo dodany do bazy!!!</a> 
+      </div>
 </div>

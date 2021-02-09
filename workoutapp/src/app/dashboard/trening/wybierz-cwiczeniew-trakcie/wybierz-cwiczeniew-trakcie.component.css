@@ -1,0 +1,79 @@
+mat-dialog-container{
+    background-color: red!important;
+}
+#card, .card {
+    box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+      cursor: pointer;
+      transition: 0.4s;
+    }
+    
+    .mat-paginator{
+        margin-top: 50px;
+  
+        }
+    h2{
+      
+      font-weight: 600;
+    }
+    h5{
+      font-weight: 500;
+    }
+    #card:hover {
+      transform: scale(0.9, 0.9);
+      box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
+        -5px -5px 30px 15px rgba(0,0,0,0.22);
+    }
+      
+    .loader {
+      border: 16px solid #f3f3f3; /* Light grey */
+      border-top: 16px solid #3498db; /* Blue */
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      animation: spin 2s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    
+       img{
+         width: 100%;
+         height: 100%;
+       }
+    
+       label{
+        font-size: 20px;
+        font-weight: 600;  
+    }
+       #kontener{
+         max-width: 100%;
+         margin-left: 20px;
+         padding-right:20px;
+         padding-top:20px;
+       }   
+       .stop-watch {
+        font-family: 'Source Code Pro', monospace;
+        text-align: center;
+        font-size: 3em;
+        padding: 30px;
+      }
+    
+      .control {
+        width: 300px;
+        padding: 5px;
+        margin-top: 15px;
+        font-size: 36px;
+        font-weight: bold;
+        border: 2px solid #f44336;
+        border-radius: 4px;
+        cursor: pointer;
+        outline: none;
+      }
+    
+      .control:hover {
+        background: #f44336;
+        color: aliceblue;
+      }  

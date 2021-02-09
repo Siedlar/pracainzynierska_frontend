@@ -6,3 +6,47 @@
         </div>
     </div>
 </div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ml-1" *ngIf="loading">
+       
+    <div class="loader"> </div>  
+</div>
+
+<div class= "row" *ngIf="!fail" data-aos="fade-in"
+data-aos-offset="100"
+data-aos-delay="50"
+data-aos-duration="700"
+data-aos-easing="ease-in-out"
+data-aos-mirror="true"
+data-aos-once="true">
+<div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12  mt-5" *ngFor="let trening of activePageDataChunk;" id="content" > 
+<div class="card" >
+<i class="far fa-window-close " type="button" (click)="deleteTrening(trening)"></i>
+  <div class="card-header"><h5>Data treningu:  {{trening.dataTreningu}}</h5></div>
+  <div class="card-body" (click)="szczegolyTreningu(trening)">
+<h5  > Czas trwania treningu: {{trening.czasTrwania}}   </h5>  
+<h5 > Typ treningu: {{trening.typTreningu.typTreningu}}   </h5>  
+<h5 > Ilość ćwiczeń w treningu: {{trening.historiaCwiczen.length}}   </h5>  
+  </div>
+  
+
+</div>
+
+</div>
+
+</div>
+<div class= "row">
+<div class="container-fluid dashboard-content "> 
+<mat-paginator *ngIf="!fail" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3 float-right" [length]="treningi.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChanged($event)"></mat-paginator>
+</div>
+</div>
+<div class= "row" *ngIf="fail && !loading || treningi.length == 0">
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3" >
+
+  
+
+<p >{{failMessage}}</p>
+<p>Wpisz swój pierwszy trening  <span class="text-primary"  routerLink="/dashboard/dodaj-trening" type="button">tutaj</span></p>
+
+</div>
+</div>

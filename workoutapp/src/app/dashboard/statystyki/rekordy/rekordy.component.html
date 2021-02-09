@@ -6,3 +6,63 @@
         </div>
     </div>
 </div>
+<div class="container overflow-auto" *ngIf="dataSource != undefined"
+data-aos="fade-in" data-aos-offset="100"
+data-aos-delay="50"
+data-aos-duration="700"
+data-aos-easing="ease-in-out"
+data-aos-mirror="true"
+data-aos-once="true">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="nazwa_cwiczenia">
+        <th mat-header-cell *matHeaderCellDef> Nazwa Ćwiczenia</th>
+        <td mat-cell *matCellDef="let element"> {{element.cwiczenie.nazwa_cwiczenia  | uppercase  }} </td>
+      </ng-container>
+    <ng-container matColumnDef="maks_czas_trwania">
+      <th mat-header-cell *matHeaderCellDef> Najdłuższy czas trwania ćwiczenia </th>
+      <td mat-cell *matCellDef="let element"> {{element.maks_czas_trwania}}</td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="maks_seria">
+      <th mat-header-cell *matHeaderCellDef> Największa ilość serii </th>
+      <td mat-cell *matCellDef="let element"> {{element.maks_seria}}</td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="maks_powtorzenia">
+      <th mat-header-cell *matHeaderCellDef> Największa ilość powtórzeń </th>
+      <td mat-cell *matCellDef="let element"> <div *ngIf="element.maks_powtorzenia != null">{{element.maks_powtorzenia}}</div> <div *ngIf="element.maks_powtorzenia == null">Nie dotyczy</div></td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="maks_ciezar">
+      <th mat-header-cell *matHeaderCellDef> Największy ciężar [kg] </th>
+      <td mat-cell *matCellDef="let element"> <div *ngIf="element.maks_ciezar != null">{{element.maks_ciezar}}</div> <div *ngIf="element.maks_ciezar == null">Nie dotyczy</div></td>
+    </ng-container>
+        <!-- Symbol Column -->
+  <ng-container matColumnDef="maks_czas">
+   <th mat-header-cell *matHeaderCellDef> Maksymalny czas trwania ćwiczenia kardio </th>
+   <td mat-cell *matCellDef="let element"> <div *ngIf="element.maks_czas != null">{{element.maks_czas}}</div> <div *ngIf="element.maks_czas == null">Nie dotyczy</div></td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="maks_kilometry">
+        <th mat-header-cell *matHeaderCellDef> Maksymalna długość [m] </th>
+        <td mat-cell *matCellDef="let element"> <div *ngIf="element.maks_kilometry != null">{{element.maks_kilometry}}</div> <div *ngIf="element.maks_kilometry == null">Nie dotyczy</div></td>
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3" *ngIf="dataSource == undefined">
+     
+  <h3>Nie posiadasz jeszcze żadnego rekordu, dodaj swój pierwszy trening <span class="text-primary"  routerLink="/dashboard/dodaj-trening" type="button">tutaj</span></h3>
+       
+        </div>

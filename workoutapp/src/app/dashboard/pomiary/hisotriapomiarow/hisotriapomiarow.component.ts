@@ -30,11 +30,12 @@ export class HisotriapomiarowComponent implements OnInit, AfterViewInit{
     this.pomiar.getPomiary().subscribe(
       data=>{
       
-        this.fail=false;
+     
         this.pomiary=data;     
         this.pomiary.sort((a, b) => new Date(b.data).getTime() - new Date(a.data).getTime());
         this.loading = false;
         this.activePageDataChunk = this.pomiary.slice(0,this.pageSize);
+        this.fail=false;
       },error=>{
         console.log(error.message);
         this.fail=true;

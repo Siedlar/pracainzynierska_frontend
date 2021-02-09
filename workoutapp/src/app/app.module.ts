@@ -15,13 +15,6 @@ import { ZarejestrujComponent } from './zarejestruj/zarejestruj.component';
 import { NiepamietaszhaslaComponent } from './niepamietaszhasla/niepamietaszhasla.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
-import { KlatkaComponent } from './dashboard/cwiczenia/klatka/klatka.component';
-import { BarkiComponent } from './dashboard/cwiczenia/barki/barki.component';
-import { PlecyComponent } from './dashboard/cwiczenia/plecy/plecy.component';
-import { BrzuchComponent } from './dashboard/cwiczenia/brzuch/brzuch.component';
-import { NogiComponent } from './dashboard/cwiczenia/nogi/nogi.component';
-import { BicepsComponent } from './dashboard/cwiczenia/biceps/biceps.component';
-import { TricepsComponent } from './dashboard/cwiczenia/triceps/triceps.component';
 import { KontoComponent } from './dashboard/konto/konto.component';
 import { UserServiceService } from './service/user-service.service';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -50,6 +43,26 @@ import { ListarutynComponent } from './dashboard/rutynyicwiczenia/listarutyn/lis
 import { StworzprzykladowarutyneComponent } from './dashboard/rutynyicwiczenia/stworzprzykladowarutyne/stworzprzykladowarutyne.component';
 import { InformacjeComponent } from './dashboard/konto/informacje/informacje.component';
 import { ZmieninformacjeComponent } from './dashboard/konto/zmieninformacje/zmieninformacje.component';
+import { JednoCwiczenieComponent } from './dashboard/rutynyicwiczenia/jedno-cwiczenie/jedno-cwiczenie.component';
+import { DodajCwiczenieComponent } from './dashboard/rutynyicwiczenia/dodaj-cwiczenie/dodaj-cwiczenie.component';
+
+import { WagaComponent } from './dashboard/statystyki/statystykipomiarow/partia/waga/waga.component';
+import { BicepsComponent } from './dashboard/statystyki/statystykipomiarow/partia/biceps/biceps.component';
+import { UdoComponent } from './dashboard/statystyki/statystykipomiarow/partia/udo/udo.component';
+import { TaliaComponent } from './dashboard/statystyki/statystykipomiarow/partia/talia/talia.component';
+import { BrzuchComponent } from './dashboard/statystyki/statystykipomiarow/partia/brzuch/brzuch.component';
+import { PrzedramieComponent } from './dashboard/statystyki/statystykipomiarow/partia/przedramie/przedramie.component';
+import { LydkaComponent } from './dashboard/statystyki/statystykipomiarow/partia/lydka/lydka.component';
+import { SzyjaComponent } from './dashboard/statystyki/statystykipomiarow/partia/szyja/szyja.component';
+import { KlatkaComponent } from './dashboard/statystyki/statystykipomiarow/partia/klatka/klatka.component';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { BmiComponent } from './dashboard/statystyki/bmi/bmi.component';
+import { JedenTreningComponent } from './dashboard/trening/jeden-trening/jeden-trening.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { WybierzCwiczenieComponent } from './dashboard/trening/wybierz-cwiczenie/wybierz-cwiczenie.component';
+import { DodajTreningwTrakcieComponent } from './dashboard/trening/dodaj-treningw-trakcie/dodaj-treningw-trakcie.component';
+import { WybierzCwiczeniewTrakcieComponent } from './dashboard/trening/wybierz-cwiczeniew-trakcie/wybierz-cwiczeniew-trakcie.component';
+import { MatTableModule } from '@angular/material/table';
 
 const routes: Routes = [
   { path: '', component: WelcomepageComponent ,
@@ -60,20 +73,35 @@ const routes: Routes = [
   { path: 'zarejestruj', component: ZarejestrujComponent },
   { path: 'dashboard', component: DashboardComponent ,canActivate: [AuthGuardService],
 children:[
+  { path: 'jeden-trening', component: JedenTreningComponent },
   { path: 'zmien-haslo', component: ChangePassComponent },
+  { path: 'dodaj-cwiczenie', component: DodajCwiczenieComponent },
   { path: 'zmien-email', component: ChangeEmailComponent },
   { path: 'zmien-login', component: ChangeLoginComponent },
   { path: 'usun-konto', component: UsunKontoComponent },
   { path: '', component: InformacjeComponent },
   { path: 'zmien-informacje', component: ZmieninformacjeComponent },
+  { path: 'dodaj-trening-w-trakcie', component: DodajTreningwTrakcieComponent },
   { path: 'dodaj-trening', component: DodajtreningComponent },
   { path: 'historia-treningu', component: HistoriatreningowComponent },
   { path: 'dodaj-pomiar', component: DodajpomiarComponent },
   { path: 'historia-pomiarow', component: HisotriapomiarowComponent },
+  { path: 'bmi', component: BmiComponent },
   { path: 'rekordy', component: RekordyComponent },
-  { path: 'statystyki-pomiarow', component: StatystykipomiarowComponent },
+  { path: 'statystyki-pomiarow', component: StatystykipomiarowComponent, children:[
+    {path: 'waga', component:WagaComponent },
+    {path: 'biceps', component:BicepsComponent },
+    {path: 'lydka', component:LydkaComponent },
+    {path: 'przedramie', component:PrzedramieComponent },
+    {path: 'szyja', component:SzyjaComponent },
+    {path: 'talia', component:TaliaComponent },
+    {path: 'udo', component:UdoComponent },
+    {path: 'klatka', component:KlatkaComponent },
+    {path: 'brzuch', component:BrzuchComponent },
+  ]},
   { path: 'statystyki-treningow', component: StatystykitreningowComponent },
-  { path: 'lista-cwiczen', component: ListacwiczenComponent },
+  { path: 'lista-cwiczen', component: ListacwiczenComponent ,},
+  { path: 'cwiczenie', component: JednoCwiczenieComponent ,},
   { path: 'lista-rutyn', component: ListarutynComponent },
   { path: 'stworz-rutyne', component: StworzprzykladowarutyneComponent },
 
@@ -96,13 +124,6 @@ children:[
     NiepamietaszhaslaComponent,
     DashboardComponent,
     LoginComponent,
-    KlatkaComponent,
-    BarkiComponent,
-    PlecyComponent,
-    BrzuchComponent,
-    NogiComponent,
-    BicepsComponent,
-    TricepsComponent,
     KontoComponent,
     ChangePasswordComponent,
     UsunKontoComponent,
@@ -120,7 +141,25 @@ children:[
     ListarutynComponent,
     StworzprzykladowarutyneComponent,
     InformacjeComponent,
-    ZmieninformacjeComponent
+    ZmieninformacjeComponent,
+    JednoCwiczenieComponent,
+    DodajCwiczenieComponent,
+    WagaComponent,
+    BicepsComponent,
+    UdoComponent,
+    TaliaComponent,
+    BrzuchComponent,
+    PrzedramieComponent,
+    LydkaComponent,
+    SzyjaComponent,
+    KlatkaComponent,
+    BmiComponent,
+    JedenTreningComponent,
+    WybierzCwiczenieComponent,
+    DodajTreningwTrakcieComponent,
+    WybierzCwiczeniewTrakcieComponent,
+ 
+
   ],
   imports: [
     BrowserAnimationsModule,  
@@ -133,11 +172,19 @@ children:[
     BrowserAnimationsModule,
     NgbModule,
     ValidateEqualModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ChartsModule,
+    MatDialogModule,
+    MatTableModule     
+  
   ],
  
   providers: [UserServiceService,AuthGuardService,authInterceptorProviders],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    WybierzCwiczenieComponent,
+    WybierzCwiczeniewTrakcieComponent,
+  ],
 })
 
 export class AppModule {

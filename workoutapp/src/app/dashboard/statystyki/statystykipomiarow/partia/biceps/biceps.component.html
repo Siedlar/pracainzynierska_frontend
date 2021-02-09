@@ -1,0 +1,19 @@
+
+    <div class="chart-wrapper">
+        <div *ngIf="chartReady && !noValues" class="float-right "><h2 class="ml-3">Skala: </h2><button  class =" btn btn-rounded btn-dark ml-3 float-right"  (click)="rok()"> rok</button>  <button  class =" btn btn-rounded btn-dark ml-3 float-right"  (click)="miesiac()"> miesiąc</button>  <button class =" btn btn-rounded btn-dark ml-3 float-right" (click)="dzien()"> dzień</button> </div>
+
+        <canvas baseChart   *ngIf="chartReady && !noValues"
+            [datasets]="lineChartData" 
+            [labels]="lineChartLabels" 
+            [options]="lineChartOptions"
+            [colors]="lineChartColors" 
+            [legend]="lineChartLegend" 
+            [chartType]="lineChartType" 
+        >
+        </canvas>          </div>
+        <div class="mt-5"*ngIf="chartReady && noValues">
+            <h1> Nie masz jeszcze pomiarów. Dodaj swój pierwszy pomiar klikając <span routerLink="/dashboard/dodaj-pomiar" >  tutaj</span></h1>
+                      </div>
+            
+            
+

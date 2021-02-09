@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" >
+        <div class="page-header">
+            <h2 class="pageheader-title">Szczegóły Treningu </h2>
+            <hr>
+        </div>
+    </div>
+</div>
+<div class="card"  data-aos="fade-left"
+data-aos-offset="100"
+data-aos-delay="50"
+data-aos-duration="700"
+data-aos-easing="ease-in-out"
+data-aos-mirror="true"
+data-aos-once="true">
+    <div class="card-body">
+        <h5>Data Treningu:{{historiaTreningu.dataTreningu}}</h5>
+<h5>Czas trwania treningu:{{historiaTreningu.czasTrwania}} min</h5>
+<h5>Typ Treningu:{{historiaTreningu.typTreningu.typTreningu}}</h5>
+
+</div>
+</div>
+<div *ngFor="let historia of historiaTreningu.historiaCwiczen ; let i=index" class="mt-5"  data-aos="fade-left"
+data-aos-offset="100"
+data-aos-delay="50"
+data-aos-duration="700"
+data-aos-easing="ease-in-out"
+data-aos-mirror="true"
+data-aos-once="true">
+    <h5 class="mb-5">Ćwiczenie nr {{i+1}}</h5>
+<div class="card mt-3 " >
+    <div class="card-header text-center"> {{historia.cwiczenie.nazwa_cwiczenia | titlecase  }} </div>
+    <div class="card-body">
+
+        <h6> Czas trwania ćwiczenia: {{historia.czasTrwaniaCwiczenia}}</h6>
+        <hr>
+
+ <a *ngFor="let cwiczenie of historia.jednoCwiczenie">
+    <h6>  Seria: {{cwiczenie.seria}}  </h6>
+    <h6 *ngIf="cwiczenie.powtorzenia != null">  Powtorzenia:  {{cwiczenie.powtorzenia}}</h6>
+    <h6  *ngIf="cwiczenie.czas != null"> Ciężar:  {{cwiczenie.ciezar}}</h6>
+    <h6  *ngIf="cwiczenie.kilometry != null"> Kilometry: {{cwiczenie.kilometry}}  </h6>
+    <h6  *ngIf="cwiczenie.czas != null"> Czas:  {{cwiczenie.czas}}</h6>
+    <hr>
+ </a>
+
+</div>
+</div>
+</div>
+<div class="card mt-5"  data-aos="fade-left"
+data-aos-offset="100"
+data-aos-delay="50"
+data-aos-duration="700"
+data-aos-easing="ease-in-out"
+data-aos-mirror="true"
+data-aos-once="true">
+    <div class="card-header">  Notatka</div>
+    <div class="card-body">
+        {{historiaTreningu.notatka}}
+    </div>
+</div>
