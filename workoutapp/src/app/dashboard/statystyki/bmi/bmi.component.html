@@ -6,9 +6,7 @@
         </div>
     </div>
 </div>
-<p *ngIf="!ifWzrost  && ifPomiar ">nie posiadasz jeszcze wzrostu, uzupełnij go</p>
-<p *ngIf="!ifPomiar && ifWzrost">nie posiadasz jeszcze pomiaru wagi, uzupełnij go</p>
-<p *ngIf="!ifPomiar && !ifWzrost">nie posiadasz jeszcze pomiaru wagi oraz  wzorstu, uzupełnij je</p>
+
 <div *ngIf="ifPomiar && ifWzrost"> 
     <div class ="row" data-aos="fade-left"
     data-aos-offset="100"
@@ -40,3 +38,6 @@
 </div></div>
 
 </div>
+<h4 *ngIf="!ifWzrost  && ifPomiar && loading ">Nie posiadasz jeszcze wzrostu, uzupełnij go <span class="text-primary"  routerLink="/dashboard/zmien-informacje" type="button">tutaj</span></h4>
+    <h4 *ngIf="!ifPomiar && ifWzrost && loading">Nie posiadasz jeszcze pomiaru wagi, uzupełnij go<span class="text-primary"  routerLink="/dashboard/dodaj-pomiar" type="button">tutaj</span></h4>
+        <h4 *ngIf="!ifPomiar && !ifWzrost && loading">Nie posiadasz jeszcze pomiaru wagi oraz  wzorstu, uzupełnij je</h4>

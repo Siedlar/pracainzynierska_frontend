@@ -6,13 +6,18 @@
         </div>
     </div>
 </div>
-<div class="container overflow-auto" *ngIf="dataSource != undefined"
+<div class="container overflow-auto" *ngIf="loading &&dataSource != undefined"
 data-aos="fade-in" data-aos-offset="100"
 data-aos-delay="50"
 data-aos-duration="700"
 data-aos-easing="ease-in-out"
 data-aos-mirror="true"
 data-aos-once="true">
+<div class="user-box d-flex justify-content-center mb-3 ">
+  <h5 class="mr-3">Filtrowanie po nazwie ćwiczenia:</h5>
+<input matInput type="text" (keyup)="filter($event.target.value)"  >
+
+</div>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
@@ -61,7 +66,7 @@ data-aos-once="true">
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </div>
-<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3" *ngIf="dataSource == undefined">
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3" *ngIf="loading && dataSource == undefined">
      
   <h3>Nie posiadasz jeszcze żadnego rekordu, dodaj swój pierwszy trening <span class="text-primary"  routerLink="/dashboard/dodaj-trening" type="button">tutaj</span></h3>
        

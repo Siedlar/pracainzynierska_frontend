@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" >
+        <div class="page-header">
+            <h2 class="pageheader-title">Szczegóły treningu </h2>
+            <hr>
+        </div>
+    </div>
+</div>
+<div class="row" >
+    <h1 class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center mb-5">Nazwa treningu: Przykładowy trening {{trening.typTreningu.typTreningu}} nr {{trening.trening_id}}</h1>
+    <div *ngFor="let cwiczenie of trening.cwiczenie;">
+  <h2 class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center mb-3">Ćwiczona partia: {{cwiczenie.partia.partia}}</h2>
+        <div  class="card mb-3 flex-row " id="card" data-aos="fade-left"
+        data-aos-offset="100"
+        data-aos-delay="50"
+        data-aos-duration="700"
+        data-aos-easing="ease-in-out"
+        data-aos-mirror="true"
+        data-aos-once="true">
+       
+            <div class="row">
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 " id="siema"> 
+                
+                <h5 > <img src="{{cwiczenie.url_zdjecia}}"></h5>    
+            </div>
+               
+            <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 text-lg-left "> 
+                
+                <h2 class="pl-md-3">Ćwiczenie: {{cwiczenie.nazwa_cwiczenia}}</h2>
+                <h5 class="pl-md-3 fs ">Poziom zaawansowania: {{cwiczenie.trudnosc.trudnosc}}</h5>
+                <h5 class="pl-md-3">Partia mięśniowa: {{cwiczenie.partia.partia}}</h5>
+                <h5 class="pl-md-3">Potrzebny ekwipunek: <span *ngFor="let ekwipunek of cwiczenie.ekwipunek ;let lastItem = last;"> {{ekwipunek.ekwipunek}} <span *ngIf="!lastItem">,</span></span></h5>  
+            </div>
+                
+             
+            </div>
+   
+        </div>
+    </div>   </div>

@@ -230,6 +230,9 @@ dodajSerie2() {
 console.log(this.jednoCwiczenie2)
 let cwiczenieTemp:JednoCwiczenie= new JednoCwiczenie();
 cwiczenieTemp.seria=this.jednoCwiczenie2.controls['seria'].value
+if(this.mm2 <1){
+  this.mm2=1;
+}
 cwiczenieTemp.czas = this.mm2;
 cwiczenieTemp.kilometry=this.jednoCwiczenie2.controls['kilometry'].value
 

@@ -1,3 +1,6 @@
 h3,h2{
     font-weight: 1000;
 }
+span{
+    text-decoration: underline;
+    }

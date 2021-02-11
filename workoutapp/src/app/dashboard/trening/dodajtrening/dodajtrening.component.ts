@@ -85,6 +85,7 @@ if (this.historiaTreningu.historiaCwiczen.length == 0) {
 this.brakCwiczen=true;
     return;
 }
+if(confirm("Czy chcesz zakończyć dodawanie treningu? ")){
 this.historiaTreningu.czasTrwania=this.cwiczenieForm.controls['czasTrwania'].value
 this.historiaTreningu.dataTreningu=this.cwiczenieForm.controls['dataTreningu'].value
 this.historiaTreningu.notatka=this.cwiczenieForm.controls['notatka'].value
@@ -102,6 +103,6 @@ this.treningService.dodajTrening( this.historiaTreningu).subscribe(
     
   }
 )
-  }
+  }}
 }
 

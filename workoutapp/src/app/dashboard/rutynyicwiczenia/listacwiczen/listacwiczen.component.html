@@ -83,3 +83,4 @@
         <div class= "row">
             <div class="container-fluid dashboard-content "> 
                 <mat-paginator *ngIf="loading" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3 float-right" [length]="filterArray.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChanged($event)"></mat-paginator>
+            </div>

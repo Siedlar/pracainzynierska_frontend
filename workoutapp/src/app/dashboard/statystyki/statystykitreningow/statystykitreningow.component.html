@@ -6,3 +6,127 @@
         </div>
     </div>
 </div>
+<div class="d-flex justify-content-center container " *ngIf="!dalej && !stworz" id="kontener" data-aos="fade-in"
+data-aos-offset="100"
+data-aos-delay="50"
+data-aos-duration="700"
+data-aos-easing="ease-in-out"
+data-aos-mirror="true"
+data-aos-once="true">
+    <div  class="mx-auto mb-auto mt-auto " >
+        <h1 class="mb-3 ml-3  ">Wybierz statystyke którą chcesz zobaczyć</h1>
+        <div class="row">
+            
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+        <button class="btn btn-primary  mt-3" style="width:233px;" (click)="pobierzStatystykiOgolne()">Statystyki ogólne</button>
+    </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12" >
+        <button class="btn btn-primary mt-3  float-right" (click)="przejdzDalej()" id="baton">Statystyki wybranego ćwiczenia</button>
+    </div>
+    </div>
+</div>
+</div>
+<div *ngIf="!dalej && stworz  && !blad ">
+    Ilość treningów ogólna {{treningi.length}}
+    Ilość treningów w zeszłym miesiącu
+    Ilość treningów w tym tygodniu 
+  
+</div>
+<div *ngIf="!dalej && blad">
+    <h3>Nie zacząłeś jeszcze prowadzić historii treningów, uzupełnij swój pierwszy trening.</h3>
+    
+        </div>
+
+    <div class="row"*ngIf="dalej &&  !zmien" >
+  
+    <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12 col-12">
+        <div type="button" class="card mb-3 flex-row" id="card" *ngFor="let cwiczenie of activePageDataChunk;" (click)="szczegoly(cwiczenie)" data-aos="fade-left"
+        data-aos-offset="100"
+        data-aos-delay="50"
+        data-aos-duration="700"
+        data-aos-easing="ease-in-out"
+        data-aos-mirror="true"
+        data-aos-once="true">
+            <div class="row">
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 " id="siema"> 
+                
+                <h5 > <img src="{{cwiczenie.url_zdjecia}}"></h5>    
+            </div>
+               
+            <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 text-lg-left "> 
+                
+                <h2 class="pl-md-3">Ćwiczenie: {{cwiczenie.nazwa_cwiczenia}}</h2>
+                <h5 class="pl-md-3 fs ">Poziom zaawansowania: {{cwiczenie.trudnosc.trudnosc}}</h5>
+                <h5 class="pl-md-3">Partia mięśniowa: {{cwiczenie.partia.partia}}</h5>
+                <h5 class="pl-md-3">Potrzebny ekwipunek: <span *ngFor="let ekwipunek of cwiczenie.ekwipunek ;let lastItem = last;"> {{ekwipunek.ekwipunek}} <span *ngIf="!lastItem">,</span></span></h5>  
+            </div>
+                
+             
+            </div>
+   
+        </div>
+        </div>
+      
+        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12" >
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="font-16">Filtrowanie</h3>
+                </div>
+                <form [formGroup]="cwiczenieForm" (ngSubmit)="onSubmit()"  >
+                <div class="card-body border-top">
+                    <h3 class="font-16">Trudność </h3>
+                    <select class="form-control"  formControlName="trudnosc" >
+                        <option [ngValue]=""  value="">-- Wybierz trudność --</option>
+                        <option *ngFor="let trudnosc of Trudnosc" >
+                          {{ trudnosc.trudnosc }}
+                        </option>
+                      </select>
+              
+                </div>
+                <div class="card-body border-top">
+                    <h3 class="font-16">Ekwipunek </h3>
+                    <select class="form-control"   formControlName="ekwipunek"  >
+                        <option  [ngValue]="" value="">-- Wybierz ekwipunek --</option>
+                        <option *ngFor="let ekwipunek of Ekwipunek">
+                          {{ ekwipunek.ekwipunek }}
+                        </option>
+                      </select>
+                  
+                </div>
+                <div class="card-body border-top">
+                    <h3 class="font-16">Partia </h3>       
+                      <select class="form-control"  formControlName="partia"  >
+                        <option [ngValue]="" value="" >-- Wybierz partię --</option>
+                      <option *ngFor="let partia of Partia" >
+                        {{ partia.partia }}
+                      </option>
+                    </select>
+                </div>
+                <div class="card-body border-top">
+                    <h3 class="font-16">Znajdź po nazwie ćwiczenia</h3>
+                    <input type="text" formControlName="nazwa_cwiczenia" class="form-control" > 
+                </div>
+                <div class="card-body border-top">
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </div>
+            </form>
+            </div>
+        </div>
+
+    </div>
+        <div class= "row">
+            <div class="container-fluid dashboard-content "> 
+                <mat-paginator *ngIf="dalej &&  !zmien" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3 float-right" [length]="filterArray.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChanged($event)"></mat-paginator>
+            </div>
+        </div>
+  
+
+
+<div *ngIf="dalej &&  zmien">
+    <div *ngIf="blad">
+<h3>Nie posiadasz jeszcze żadnej historii związanej z danym ćwiczeniem</h3>
+
+    </div>
+</div>
+
+

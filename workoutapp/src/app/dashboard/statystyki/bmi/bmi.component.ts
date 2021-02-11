@@ -11,6 +11,7 @@ import { Pomiar } from 'src/app/types/pomiar';
 export class BmiComponent implements OnInit ,DoCheck{
 wzrost:number;
  suma:number;
+ loading:boolean=false;
 pomiary:Array<Pomiar>
 waga:Array<number>
 ifWaga:boolean=false;
@@ -67,13 +68,13 @@ ifPomiar:boolean=false;
      
         this.suma=   this.waga[0]/((this.wzrost/100)*(this.wzrost/100))
         console.log(this.suma)},error=>{
-        console.log("elo")
+        this.loading=true;
        
       }
     )
       },error =>{
         
-console.log("siema")
+        this.loading=true;
       })
     
 

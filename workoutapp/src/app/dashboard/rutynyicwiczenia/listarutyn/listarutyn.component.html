@@ -6,3 +6,21 @@
         </div>
     </div>
 </div>
+
+<div class= "row" >
+    <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12  mt-5" *ngFor="let trening of activePageDataChunk;" id="content" > 
+      <div class="card" (click)="szczegolyCwiczenia(trening)">
+     
+          <div class="card-header"><h5>Nazwa treningu:  Trening przykładowy {{trening.trening_id}}</h5></div>
+          <div class="card-body" >
+      <h5 > Typ treningu: {{trening.typTreningu.typTreningu}}   </h5>  
+      <h5 >   Ilość ćwiczeń:{{trening.cwiczenie.length}} </h5>  
+          </div>
+
+      </div>
+    </div>
+</div>
+<div class= "row">
+    <div class="container-fluid dashboard-content "> 
+        <mat-paginator class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3 float-right" [length]="filterArray.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChanged($event)"></mat-paginator>
+    </div></div>

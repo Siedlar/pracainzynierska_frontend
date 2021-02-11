@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
@@ -14,6 +14,8 @@ import { Trudnosc } from 'src/app/types/trudnosc';
   styleUrls: ['./listacwiczen.component.css']
 })
 export class ListacwiczenComponent implements OnInit {
+  @Output()
+  change: EventEmitter<Cwiczenia> = new EventEmitter<Cwiczenia>();
 cwiczenia:Array<Cwiczenia>
 dynamicForm: FormGroup;
 loading = false;
@@ -64,7 +66,21 @@ cwiczenieForm = new FormGroup({
     window.scroll(0,0);
   }
   szczegoly(cwiczenie){
-    this.router.navigate(['/dashboard/cwiczenie'],{state:{cwiczenie}})
+// console.log(event)
+// if(event.path.some(x=>x.localName === 'app-statystykitreningow')){
+//   cwiczenie
+//   console.log("siema")
+//   this.change.emit(cwiczenie);
+//   // this.router.navigate(['/dashboard/statystyki-treningow/cwiczenie'],{state:{cwiczenie}})
+ 
+// }else{
+  
+  this.router.navigate(['/dashboard/cwiczenie'],{state:{cwiczenie}})
+
+    
+    
+    
+
   }
   onSubmit(){
     console.log( this.cwiczenieForm.value)

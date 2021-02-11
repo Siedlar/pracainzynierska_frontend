@@ -125,6 +125,7 @@ export class DodajTreningwTrakcieComponent implements OnInit {
  this.brakCwiczen=true;
      return;
  }
+ if(confirm("Czy chcesz zakończyć dodawanie treningu?")){
  this.historiaTreningu.czasTrwania=this.mm
  this.historiaTreningu.dataTreningu=this.todayDate
  this.historiaTreningu.notatka=this.cwiczenieForm.controls['notatka'].value
@@ -142,7 +143,7 @@ export class DodajTreningwTrakcieComponent implements OnInit {
      
    }
  )
-   }
+   }}
    
 
 

@@ -24,6 +24,21 @@ typTreningu:historiaTreningu.typTreningu
   getTypyTreningu() :Observable<any>{
     return this.http.get(API_URL + 'getTypyTreningu');
   }
+  getPrzykladoweTreningi() :Observable<any>{
+    return this.http.get(API_URL + 'getPrzykladoweTreningi');
+  }
+  getWybraneCwiczenie(cwiczenie) :Observable<any>{
+    console.log(cwiczenie.cwiczenie_id)
+    return this.http.post(API_URL + 'getWybraneCwiczenie',{
+      cwiczenie_id:cwiczenie.cwiczenie_id
+    },httpOptions);
+  }
+  stworzTrening(treningi) :Observable<any>{
+    return this.http.post(API_URL + 'stworzTrening',{
+      typTreningu:treningi.typTreningu,
+      split:treningi.split
+    });
+  }
   getTreningi() :Observable<any>{
     return this.http.get(API_URL + 'getTreningi');
   }

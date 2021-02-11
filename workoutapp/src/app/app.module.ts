@@ -45,7 +45,7 @@ import { InformacjeComponent } from './dashboard/konto/informacje/informacje.com
 import { ZmieninformacjeComponent } from './dashboard/konto/zmieninformacje/zmieninformacje.component';
 import { JednoCwiczenieComponent } from './dashboard/rutynyicwiczenia/jedno-cwiczenie/jedno-cwiczenie.component';
 import { DodajCwiczenieComponent } from './dashboard/rutynyicwiczenia/dodaj-cwiczenie/dodaj-cwiczenie.component';
-
+ import {SzczegolyTreninguComponent} from './dashboard/rutynyicwiczenia/listarutyn/szczegoly-treningu/szczegoly-treningu.component'
 import { WagaComponent } from './dashboard/statystyki/statystykipomiarow/partia/waga/waga.component';
 import { BicepsComponent } from './dashboard/statystyki/statystykipomiarow/partia/biceps/biceps.component';
 import { UdoComponent } from './dashboard/statystyki/statystykipomiarow/partia/udo/udo.component';
@@ -64,6 +64,7 @@ import { DodajTreningwTrakcieComponent } from './dashboard/trening/dodaj-trening
 import { WybierzCwiczeniewTrakcieComponent } from './dashboard/trening/wybierz-cwiczeniew-trakcie/wybierz-cwiczeniew-trakcie.component';
 import { MatTableModule } from '@angular/material/table';
 
+
 const routes: Routes = [
   { path: '', component: WelcomepageComponent ,
  },
@@ -73,6 +74,7 @@ const routes: Routes = [
   { path: 'zarejestruj', component: ZarejestrujComponent },
   { path: 'dashboard', component: DashboardComponent ,canActivate: [AuthGuardService],
 children:[
+  { path: 'szczegoly-treningu', component: SzczegolyTreninguComponent },
   { path: 'jeden-trening', component: JedenTreningComponent },
   { path: 'zmien-haslo', component: ChangePassComponent },
   { path: 'dodaj-cwiczenie', component: DodajCwiczenieComponent },
@@ -99,7 +101,7 @@ children:[
     {path: 'klatka', component:KlatkaComponent },
     {path: 'brzuch', component:BrzuchComponent },
   ]},
-  { path: 'statystyki-treningow', component: StatystykitreningowComponent },
+  { path: 'statystyki-treningow', component: StatystykitreningowComponent},
   { path: 'lista-cwiczen', component: ListacwiczenComponent ,},
   { path: 'cwiczenie', component: JednoCwiczenieComponent ,},
   { path: 'lista-rutyn', component: ListarutynComponent },
@@ -158,9 +160,11 @@ children:[
     WybierzCwiczenieComponent,
     DodajTreningwTrakcieComponent,
     WybierzCwiczeniewTrakcieComponent,
- 
+    SzczegolyTreninguComponent,
+  
 
   ],
+ 
   imports: [
     BrowserAnimationsModule,  
     TeximateModule,
@@ -175,8 +179,8 @@ children:[
     MatPaginatorModule,
     ChartsModule,
     MatDialogModule,
-    MatTableModule     
-  
+    MatTableModule,
+
   ],
  
   providers: [UserServiceService,AuthGuardService,authInterceptorProviders],

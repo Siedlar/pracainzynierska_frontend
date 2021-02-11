@@ -6,3 +6,104 @@
         </div>
     </div>
 </div>
+<div class="d-flex justify-content-center container " id="kontener" *ngIf="!stworz &&  !dalej" data-aos="fade-in"
+data-aos-offset="100"
+data-aos-delay="50"
+data-aos-duration="700"
+data-aos-easing="ease-in-out"
+data-aos-mirror="true"
+data-aos-once="true">
+    <div  class="mx-auto mb-auto mt-auto " >
+        <h1 class="mb-3  ">Wybierz typ treningu</h1>
+        <button class="btn btn-primary ml-5  w-25 " (click)="stworzTrening()">FBW</button>
+        <button class="btn btn-primary ml-5  w-25"  (click)="przejdzDalej()">SPLIT</button>
+    </div>
+
+</div>
+
+<div class="row" *ngIf="stworz && !dalej" >
+    <h1 class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center mb-5">Stworzony dla ciebie trening FBW</h1>
+    <div *ngFor="let cwiczenie of cwiczenia;">
+  <h2 class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center mb-3">Ćwiczona partia: {{cwiczenie.partia.partia}}</h2>
+        <div  class="card mb-3 flex-row " id="card" data-aos="fade-left"
+        data-aos-offset="100"
+        data-aos-delay="50"
+        data-aos-duration="700"
+        data-aos-easing="ease-in-out"
+        data-aos-mirror="true"
+        data-aos-once="true">
+       
+            <div class="row">
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 " id="siema"> 
+                
+                <h5 > <img src="{{cwiczenie.url_zdjecia}}"></h5>    
+            </div>
+               
+            <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 text-lg-left "> 
+                
+                <h2 class="pl-md-3">Ćwiczenie: {{cwiczenie.nazwa_cwiczenia}}</h2>
+                <h5 class="pl-md-3 fs ">Poziom zaawansowania: {{cwiczenie.trudnosc.trudnosc}}</h5>
+                <h5 class="pl-md-3">Partia mięśniowa: {{cwiczenie.partia.partia}}</h5>
+                <h5 class="pl-md-3">Potrzebny ekwipunek: <span *ngFor="let ekwipunek of cwiczenie.ekwipunek ;let lastItem = last;"> {{ekwipunek.ekwipunek}} <span *ngIf="!lastItem">,</span></span></h5>  
+            </div>
+                
+             
+            </div>
+   
+        </div>
+    </div>   </div>
+    <div class="d-flex justify-content-center container " id="kontener" *ngIf="!stworz && dalej" data-aos="fade-in"
+    data-aos-offset="100"
+    data-aos-delay="50"
+    data-aos-duration="700"
+    data-aos-easing="ease-in-out"
+    data-aos-mirror="true"
+    data-aos-once="true">
+        <div  class="mx-auto mb-auto mt-auto " >
+            <h1 class="mb-3  ">Wybierz który trening split chcesz stworzyć</h1>
+            <div class="row ml-5">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 mb-sm-0 mb-4 "> 
+                <button class="btn btn-primary  " (click)="stworzTrening2($event) " id="klatka">Klatka/Biceps</button>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 mb-sm-0 mb-4"> 
+                <button class="btn btn-primary "  (click)="stworzTrening2($event)" id="plecy" >Plecy/Triceps</button>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 mb-sm-0 mb-4"> 
+                <button class="btn btn-primary" (click)="stworzTrening2($event)" id="nogi">Nogi/Barki</button>
+            </div>
+        </div>
+        </div>
+    
+    </div>
+    <div class="row" *ngIf="stworz && dalej" >
+        <h1 class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center mb-5">Stworzony dla ciebie trening typu split dla danej kombinacji</h1>
+        <div *ngFor="let cwiczenie of cwiczenia;">
+      <h2 class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center mb-3">Ćwiczona partia: {{cwiczenie.partia.partia}}</h2>
+            <div  class="card mb-3 flex-row " id="card" data-aos="fade-left"
+            data-aos-offset="100"
+            data-aos-delay="50"
+            data-aos-duration="700"
+            data-aos-easing="ease-in-out"
+            data-aos-mirror="true"
+            data-aos-once="true">
+           
+                <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 " id="siema"> 
+                    
+                    <h5 > <img src="{{cwiczenie.url_zdjecia}}"></h5>    
+                </div>
+                   
+                <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 text-lg-left "> 
+                    
+                    <h2 class="pl-md-3">Ćwiczenie: {{cwiczenie.nazwa_cwiczenia}}</h2>
+                    <h5 class="pl-md-3 fs ">Poziom zaawansowania: {{cwiczenie.trudnosc.trudnosc}}</h5>
+                    <h5 class="pl-md-3">Partia mięśniowa: {{cwiczenie.partia.partia}}</h5>
+                    <h5 class="pl-md-3">Potrzebny ekwipunek: <span *ngFor="let ekwipunek of cwiczenie.ekwipunek ;let lastItem = last;"> {{ekwipunek.ekwipunek}} <span *ngIf="!lastItem">,</span></span></h5>  
+                </div>
+                    
+                 
+                </div>
+       
+            </div>
+        </div>   </div>
+        
